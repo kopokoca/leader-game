@@ -2,6 +2,6 @@
 ~
 __pycache__
 myvenv
-db.postgresql_psycopg2
+db.sqlite3
 static
 .DS_Store
