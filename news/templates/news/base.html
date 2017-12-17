@@ -1,0 +1,89 @@
+{% load staticfiles %}
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<title>Лидер</title>
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+	<div class="page-header clearfix">
+		<div class="container">
+			<div class="header-left">
+					<ul>
+						<li class="header-title"><button type="button" class="btn btn-default"><a href="{% url 'index' %}">Лобби</a></button></li>
+						<li class="header-title"><button type="button" class="btn btn-default" "><a href="{% url 'post_list' %}">Новости</a></button></li>
+						<li class="header-title"><button type="button" class="btn btn-default" href="#"><a href="{% url 'rate_list' %}">Рейтинг</a></button></li>
+					</ul>
+			</div>
+
+			<a class="logo-href" href="{% url 'index' %}">
+				<div class="header-middle">
+					<img src="{% static 'img/logo.png' %}" alt="Логотип игры" width="106" height="73">
+				</div>
+			</a>
+
+			<div class="header-right">
+					<ul>
+						<li class="header-title"><button type="button" class="btn btn-default"><a href="{% url 'rules' %}">Правила</a></button></li>
+						<li class="header-title"><button type="button" class="btn btn-default"><a href=#>Помощь</a></button></li>
+						{% if user.is_authenticated %}
+						<li class="header-title"><button type="button" class="btn btn-default btn-login"><a class="login-link" href="{% url 'profile_detail' %}">{{user.username}}</a></button></li>
+						{% else %}
+						<li class="header-title"><button type="button" class="btn btn-default"><a href="{% url 'login' %}">Вход</a></button></li>
+        				{% endif %}
+						
+					</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container mid-container">
+	{% block content %}
+    {% endblock %}
+	</div>
+
+	<div class="page-footer">
+		<div class="container">
+			<div class="footer-middle clearfix">
+					<div class="footer-menu">
+						<h3>Отзывы</h3>
+						<ul>
+							<li><a href="#">Показать</a></li>
+							<li><a href="#">Оставить</a></li>
+						</ul>
+					</div>
+					<div class="footer-menu">
+						<h3>Как играть</h3>
+						<ul>
+							<li><a href="{% url 'rules' %}">Правила</a></li>
+							<li><a href="#">Помощь</a></li>
+						</ul>
+					</div>
+					<div class="footer-menu">
+						<h3>Сайты-партнеры</h3>
+						<ul>
+							<li><a href="#">Список партнеров</a></li>
+						</ul>
+					</div>
+					<div class="footer-tasks">
+						Это же
+						<a class="task-btn" href="registration.json">json раз</a>,
+						<a class="task-btn" href="games.json">json два</a>
+						и
+						<a class="task-btn" href="registration.xml">xml</a>
+					</div>
+			</div>
+
+			<div class="footer-bottom clearfix">
+					<div class="footer-social">
+						<b>Мы есть в соцсетях:</b>
+						<a class="social-btn" href="https://vk.com/id46353637" target="_blank">Вконтакте</a>
+						<a class="social-btn" href="#" target="_blank">Ютуб</a>
+					</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

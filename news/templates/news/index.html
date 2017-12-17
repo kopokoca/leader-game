@@ -1,0 +1,44 @@
+{% extends 'news/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="lobby clearfix">
+	<div class="container">
+		<div class="lobby-head">
+			<img class="indian-img" src="{% static 'img/ind.jpeg' %}" alt="Индеец" width="380" heigth="380">
+		</div>
+		<div class="table-responsive ">			
+			<table class="table">
+				<tr>
+					<th>№</th>
+					<th>Название</th>
+					<th>Создатель</th>
+					<th>Игроки</th>
+					<th>Статус</th>
+				</tr>
+				<tr>
+					<td>233</td>
+					<td>Все сюда</td>
+					<td>stalker2001</td>
+					<td>6/10</td>
+					<td>Игра</td>
+				</tr>
+				<tr>
+					<td>234</td>
+					<td>Элита тут</td>
+					<td>Destroyer</td>
+					<td>6/6</td>
+					<td>Игра</td>
+				</tr>
+				<tr>
+					<td>235</td>
+					<td>Для новичков</td>
+					<td>chudo-yudo</td>
+					<td>4/10</td>
+					<td>Набор</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

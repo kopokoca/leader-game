@@ -1,0 +1,20 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+<div class="rate">	
+	<div class="table-responsive ">			
+			<table class="table">
+				<tr>
+					<th>Никнейм</th>
+					<th>Рейтинг</th>
+				</tr>
+				{% for obj in rate %}
+				<tr>
+					<td>{{obj.user.username}}</td>
+					<td>{{obl.rate}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+	</div>	
+</div>
+{% endblock %}

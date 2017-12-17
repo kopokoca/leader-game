@@ -1,0 +1,21 @@
+{% extends 'news/base.html' %}
+{% block title %}
+    Профиль {{user.username}}
+{% endblock %}
+{% block content %}
+<div class="short-content">
+	<div class="user-info">
+	    <h1>Пользователь: {{user.username}} </h1>
+	    <p>Рейтинг: {{user.profile.rate}} </p>
+	    <form method="post">
+	        {% csrf_token %}
+	        {{ user_form.as_p }}
+	        {{ profile_form.as_p }}
+	    <button type="submit">Save changes</button>
+	    </form>
+	    <button type="button" class="btn btn-default btn-exit">
+	    	<a class="exit-link" href="{% url 'logout' %}">Выйти из аккаунта</a>
+		</button>
+	</div>
+ </div>
+{% endblock %}
