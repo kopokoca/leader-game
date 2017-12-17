@@ -25,7 +25,7 @@ SECRET_KEY = 'ripf@9f^qlk()&$)51ytyto*$y)q1@_@wjbmzh9ueg$nfu&8i+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'leader-game.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'leadergame.pythonanywhere.com']
 
 
 # Application definition
