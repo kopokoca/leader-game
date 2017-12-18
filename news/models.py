@@ -1,9 +1,34 @@
 from django.db import models
+from django.conf import settings
 from django.utils import timezone
+from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User, Group, Permission
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+class Player(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+        related_name= 'players',
+        on_delete=models.CASCADE)
+
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+
+class Game(models.Model):
+    author = models.ForeignKey('auth.User')
+    title = models.CharField(verbose_name='Название игры', max_length=50)
+    players = GenericRelation(Player)
+    maxPlayers = models.PositiveIntegerField(verbose_name='Всего игроков')
+    status = models.CharField(max_length=10, default='Набор')
+
+    def __str__(self):
+        return self.title
+
+    @property
+    def total_players(self):
+        return self.players.count()
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User')

@@ -7,38 +7,43 @@
 		<div class="lobby-head">
 			<img class="indian-img" src="{% static 'img/ind.jpeg' %}" alt="Индеец" width="380" heigth="380">
 		</div>
-		<div class="table-responsive ">			
+		<div class="table-responsive ">	
 			<table class="table">
 				<tr>
-					<th>№</th>
 					<th>Название</th>
 					<th>Создатель</th>
 					<th>Игроки</th>
 					<th>Статус</th>
+					<th></th>
+					<th></th>
+					<th></th>
 				</tr>
+				{% for game in games %}
 				<tr>
-					<td>233</td>
-					<td>Все сюда</td>
-					<td>stalker2001</td>
-					<td>6/10</td>
-					<td>Игра</td>
-				</tr>
-				<tr>
-					<td>234</td>
-					<td>Элита тут</td>
-					<td>Destroyer</td>
-					<td>6/6</td>
-					<td>Игра</td>
-				</tr>
-				<tr>
-					<td>235</td>
-					<td>Для новичков</td>
-					<td>chudo-yudo</td>
-					<td>4/10</td>
-					<td>Набор</td>
-				</tr>
-			</table>
+					<td>{{game.title}}</td>
+					<td>{{game.author.username}}</td>
+					<td>{{game.total_players}}/{{game.maxPlayers}}</td>
+					<td>{{game.status}}</td>
+					{% if user.is_authenticated %}
+						<td><a href="{% url 'add_player' pk=game.pk %}">Войти</a></td>
+					{% else %}
+					{% endif %}
+					{% if game.author.username == user.username %}
+					<td><a href="{% url 'game_remove' pk=game.pk %}">Удалить</a></td>
+						{% if game.total_players == game.maxPlayers %}
+						<td><a href="{% url 'game_remove' pk=game.pk %}">Начать игру</a></td>
+						{% else %}
+						{% endif %}
+					{% else %}
+					{% endif %}
+				</tr>			
+				{% endfor %}
+			</table>		
 		</div>
+		{% if user.is_authenticated %}
+		<a href="{% url 'game_new' %}">Создать игру</a>
+		{% else %}
+		{% endif %}
 	</div>
 </div>
 {% endblock %}

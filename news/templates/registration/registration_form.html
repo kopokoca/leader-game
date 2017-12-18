@@ -1,13 +1,12 @@
 {% extends "news/base.html" %}
 
-{% block title %}
-	Регистрация
-{% endblock %}
 {% block content %}
+<div class="short-content">
 	<h1>Регистрация</h1>
 	<form action="/accounts/register/" method="post">
 		{% csrf_token %}
 		{{form.as_p}}
 		<input type="submit" value="Зарегистрироваться" />
    </form>
+</div>
 {% endblock %}

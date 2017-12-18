@@ -1,0 +1,11 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+<div class="short-content">
+    <h1>Новая игра</h1>
+    <form method="POST" class="game-form">{% csrf_token %}
+        {{ game.as_p }}
+        <button type="submit" class="save btn btn-default">Создать</button>
+    </form>
+</div>
+{% endblock %}

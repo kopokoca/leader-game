@@ -1,18 +1,28 @@
 {% extends 'news/base.html' %}
 
 {% block content %}
-<div class="rate">	
+<div class="rate short-content">	
 	<div class="table-responsive ">			
 			<table class="table">
 				<tr>
 					<th>Никнейм</th>
 					<th>Рейтинг</th>
 				</tr>
-				{% for obj in rate %}
-				<tr>
-					<td>{{obj.user.username}}</td>
-					<td>{{obl.rate}}</td>
-				</tr>
+				{% for obj in rates %}
+				{% if user.is_authenticated %}
+					{% if user.username == obj.user.username %}				
+					<tr class="tr-color">						
+						<td>{{obj.user.username}}</td>
+						<td>{{obj.rate}}</td>
+					</tr>
+					{% else %}
+					<tr>						
+						<td>{{obj.user.username}}</td>
+						<td>{{obj.rate}}</td>
+					</tr>
+					{% endif %}
+					{% else %}
+					{% endif %}
 				{% endfor %}
 			</table>
 	</div>	

@@ -14,4 +14,8 @@ urlpatterns = [
     #url(r'^user/detail/(?P<user_id>\d+)$', views.profile_detail, name='profile_detail'),
     url(r'^user/profile$', views.profile_detail,  name='profile_detail'),
     url(r'^rating$', views.rate_list,  name='rate_list'),
+    url(r'^games/new$', views.game_new,  name='game_new'),
+    url(r'^games/(?P<pk>\d+)/remove$', views.game_remove,  name='game_remove'),
+    url(r'^games/(?P<pk>\d+)/add$', views.add_player,  name='add_player'),
+    url(r'^games/(?P<pk>\d+)/play$', views.game_playing,  name='game_playing'),
 ]

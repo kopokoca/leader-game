@@ -19,7 +19,7 @@ def register(request):
      token.update(csrf(request))
      token['form'] = form
 
-     return render_to_response('registration/register.html', token)
+     return render_to_response('registration/registration_form.html', token)
 
  def registration_complete(request):
      return render_to_response('registration/registration_complete.html')
